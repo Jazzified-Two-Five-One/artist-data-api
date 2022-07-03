@@ -37,8 +37,6 @@ class ArtistDataMapperTest {
         var mappedArtist = artistDataMapper.artistDataToArtist(artistData);
 
         //then
-
-
         assertNotNull(mappedArtist.getDiscography());
         assertNotNull(mappedArtist.getGenres());
 

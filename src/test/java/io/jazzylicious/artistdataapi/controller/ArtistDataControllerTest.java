@@ -2,7 +2,7 @@ package io.jazzylicious.artistdataapi.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jazzylicious.artistdataapi.model.api.ArtistData;
-import io.jazzylicious.artistdataapi.service.ArtistDataService;
+import io.jazzylicious.artistdataapi.service.ArtistDataServiceImpl;
 import io.jazzylicious.artistdataapi.util.TestUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -13,6 +13,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.times;
 import static org.mockito.BDDMockito.verify;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -27,7 +28,7 @@ class ArtistDataControllerTest {
     private MockMvc client;
 
     @MockBean
-    private ArtistDataService artistDataService;
+    private ArtistDataServiceImpl artistDataServiceImpl;
 
     private final String baseUrl = "/artist-data";
 
@@ -55,7 +56,7 @@ class ArtistDataControllerTest {
                 .contentType(MediaType.APPLICATION_JSON));
         //then
         response.andExpect(status().isCreated());
-        verify(artistDataService, times(1)).createArtistData();
+        verify(artistDataServiceImpl, times(1)).createArtistData(any(ArtistData.class));
     }
 
 

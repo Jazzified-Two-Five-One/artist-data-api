@@ -1,13 +1,9 @@
 package io.jazzylicious.artistdataapi.service;
 
+import io.jazzylicious.artistdataapi.model.api.ArtistData;
 
-import org.springframework.stereotype.Service;
+public interface ArtistDataService {
 
-@Service
-public class ArtistDataService {
-
-    public void createArtistData() {
-
-    }
+    void createArtistData(ArtistData artistData);
 
 }
